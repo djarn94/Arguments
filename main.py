@@ -5,11 +5,12 @@ __human_name__ = 'arguments'
 # Add your code after this line
 
 #greeting - part 1
-def greet(name, greet=[] ):
-    greet = f'Hello, {name}!'
-    return greet
+def greet(name, greeting = 'Hello, <name>!'):
+  greeting_template = greeting.replace("<name>",name)
+  return greeting_template
 
-print(greet('Nova'))
+print(greet("Doc"))
+print(greet('Bob', "What's up, <name>!"))
 
 #force calculator of different planets - part 2
 def force(mass = float, body = 'earth'):
@@ -20,7 +21,7 @@ def force(mass = float, body = 'earth'):
                   'earth' : 9.8,
                   'moon' : 1.6,
                   'mars' : 3.7,
-                  'jupiter' : 23.5,
+                  'jupiter' : 23.1,
                   'saturn' : 9.0,
                   'uranus' : 8.7,
                   'neptune' : 11,
@@ -29,16 +30,17 @@ def force(mass = float, body = 'earth'):
 
     force = mass * datasource[body]
     
-    return f'{body} has a force of {force}'
+    return force
 
 #prints the force of mercury
-print(force(0.330))
+print(force(9.9))
 
 #gravitional pull calculator - part 3
-def pull(m1 = float, m2 = float, d = float):
-    G = 6673*(10**-11)
-    attraction = G * m1 * m2 / (d**2)
-    return f'the 2 objects are {attraction} of a Newton attracted towards each other!'
+def pull(m1, m2, d):
+    G = 6.674*(10**-11)
+    pull = G * m1 * m2 / (d**2)
+    return pull
 
 
-print(pull(800, 1500, 3))
+print(round(pull(800, 1500, 3),10))
+print(round(pull(0.1,5972 * (10**24),6.371*(10**6)),30))
